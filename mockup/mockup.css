@@ -6,11 +6,11 @@
    аппетитная фотография как материал первого экрана, плотная типографика,
    шоколад + крем + один горячий оранжевый. Фото-герой разрешён брифом явно.
 
-   Типографика — правка на воротах: курсивные метки, разрядка и тонкие
-   начертания сняты целиком как прямая отсылка на ИИ-работу. Комбинация —
-   из тех, что носят настоящие пекарни: Young Serif (тёплый жирный сериф,
-   один вес) на заголовки и числа, Lato (рабочий шрифт малого бизнеса,
-   400/700/900, ничего тоньше) на всё остальное. Курсивов нет нигде. */
+   Типографика — выбрана заказчиком на шрифтовом полигоне (type-test.html,
+   вариант 3 из 4): Montserrat 800/900 на заголовки, бренд и числа,
+   Source Sans 3 (400/600/700) на всё остальное — так выглядит сайт
+   реального местного бизнеса. Курсивы, положительная разрядка и тонкие
+   начертания сняты ранее как отсылка на ИИ и не возвращаются. */
 
 :root {
   --cocoa:      #2B1507;  /* основной текст на светлом; тёмные элементы */
@@ -28,8 +28,8 @@
 
   --line:      #EADCC0;   /* разделители на светлом, декоративные */
 
-  --display: "Young Serif", Georgia, serif;   /* единственный вес — 400 */
-  --ui:      "Lato", system-ui, sans-serif;   /* 400 / 700 / 900 */
+  --display: "Montserrat", system-ui, sans-serif;     /* 800 / 900 */
+  --ui:      "Source Sans 3", system-ui, sans-serif;  /* 400 / 600 / 700 */
 }
 
 * { box-sizing: border-box; }
@@ -79,7 +79,7 @@ body:not(.home) .site-head { border-bottom: 1px solid var(--line); }
 
 .brand {
   font-family: var(--display);
-  font-weight: 400; font-size: 18.5px;
+  font-weight: 800; font-size: 17.5px; letter-spacing: -0.01em;
   text-decoration: none; color: var(--cocoa); line-height: 1.05;
   white-space: nowrap;
   /* Логотип — тоже ссылка, значит тоже 44px */
@@ -95,7 +95,7 @@ body:not(.home) .site-head { border-bottom: 1px solid var(--line); }
    по правому краю навигации — hero с overflow:hidden прячет его от scrollWidth */
 .site-nav { display: flex; gap: 0; margin-right: -7px; }
 .site-nav a {
-  font-family: var(--ui); font-size: 13.5px; font-weight: 700;
+  font-family: var(--ui); font-size: 14px; font-weight: 600;
   color: var(--mocha); text-decoration: none;
   min-height: 44px; min-width: 44px;
   display: inline-flex; align-items: center; justify-content: center; padding: 0 7px;
@@ -128,8 +128,8 @@ body:not(.home) .site-head { border-bottom: 1px solid var(--line); }
 /* На десктопе заголовок ложится в две строки — вдова ломает блок */
 h1 {
   font-family: var(--display);
-  font-weight: 400; font-size: clamp(36px, 8.6vw, 62px);
-  line-height: 1.04;
+  font-weight: 900; font-size: clamp(31px, 7.8vw, 60px);
+  line-height: 1.05; letter-spacing: -0.01em;
   margin: 0 0 16px; max-width: 18ch;
 }
 .home h1 { color: var(--cream-2); }
@@ -144,7 +144,7 @@ h1 {
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 56px; padding: 0 32px;
   background: var(--ember); color: var(--cocoa); text-decoration: none;
-  font-family: var(--ui); font-weight: 900; font-size: 17px;
+  font-family: var(--display); font-weight: 800; font-size: 16.5px;
   border: 0; cursor: pointer;
   border-radius: 999px;
 }
@@ -173,7 +173,7 @@ h1 {
   border-bottom: 2px solid var(--cocoa);
 }
 .board-head h2 {
-  font-family: var(--display); font-size: 19px; font-weight: 400;
+  font-family: var(--display); font-size: 17px; font-weight: 800;
   margin: 0; color: var(--cocoa);
 }
 .board-head .when { font-family: var(--ui);
@@ -185,7 +185,7 @@ h1 {
   padding: 13px 20px; border-bottom: 1px solid var(--line);
 }
 .row:last-of-type { border-bottom: 0; }
-.row .name { font-family: var(--ui); font-weight: 700; font-size: 16.5px;
+.row .name { font-family: var(--ui); font-weight: 600; font-size: 16.5px;
   line-height: 1.25; color: var(--cocoa); }
 .row .desc {
   grid-column: 1; font-family: var(--ui);
@@ -193,8 +193,8 @@ h1 {
 }
 .row .count {
   grid-column: 2; grid-row: 1 / span 2;
-  font-family: var(--display); font-weight: 400;
-  font-size: 36px; line-height: 1;
+  font-family: var(--display); font-weight: 900;
+  font-size: 34px; line-height: 1;
   text-align: right; font-variant-numeric: tabular-nums;
   color: var(--cocoa);
 }
@@ -228,7 +228,7 @@ h1 {
 }
 /* Ссылка — в цвете текста с подчёркиванием. Оранжевый занят кнопкой.
    Тап-зона 44px через отрицательные поля, чтобы строка не распухала */
-.board-foot a { color: var(--mocha); text-decoration: none; font-weight: 700;
+.board-foot a { color: var(--mocha); text-decoration: none; font-weight: 600;
   border-bottom: 1px solid currentColor; padding-bottom: 1px;
   display: inline-flex; align-items: center; min-height: 44px; margin: -14px 0; }
 .board-foot a:hover { color: var(--cocoa); }
@@ -236,7 +236,7 @@ h1 {
 /* ---------- Десктоп ---------- */
 
 @media (min-width: 900px) {
-  .brand { font-size: 23px; }
+  .brand { font-size: 21px; }
   .brand span { display: block; }
   .site-nav { gap: 4px; margin-right: -11px; }
   .site-nav a { font-size: 14.5px; padding: 0 11px; }
@@ -260,7 +260,7 @@ h1 {
   }
   .lede { margin-bottom: 30px; }
   .home .lede { font-size: 18.5px; }
-  .row .count { font-size: 46px; }
+  .row .count { font-size: 44px; }
   .row .name { font-size: 17px; }
   .row { padding: 16px 22px; }
   .board-head { padding: 18px 22px 13px; }
@@ -278,7 +278,7 @@ h1 {
 
 .step { margin: 36px 0 0; }
 .step > h2 {
-  font-family: var(--display); font-size: 18px; font-weight: 400;
+  font-family: var(--display); font-size: 16px; font-weight: 800;
   color: var(--cocoa); margin: 0 0 12px;
   display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
 }
@@ -294,7 +294,7 @@ h1 {
 }
 .pick:first-of-type { border-radius: 14px 14px 0 0; }
 .pick:last-of-type { border-bottom: 1px solid var(--line); border-radius: 0 0 14px 14px; }
-.pick .name { font-weight: 700; font-size: 16.5px; line-height: 1.25; }
+.pick .name { font-weight: 600; font-size: 16.5px; line-height: 1.25; }
 .pick .meta {
   grid-column: 1; font-family: var(--ui);
   font-size: 13.5px; color: var(--mocha-2);
@@ -312,7 +312,7 @@ h1 {
   opacity: .6; cursor: not-allowed; }
 .stepper .qty {
   min-width: 40px; text-align: center; font-family: var(--display);
-  font-weight: 400; font-size: 21px; font-variant-numeric: tabular-nums;
+  font-weight: 800; font-size: 20px; font-variant-numeric: tabular-nums;
 }
 
 .pick.gone { background: var(--cream); }
@@ -334,7 +334,7 @@ h1 {
 .chip {
   min-height: 44px; display: inline-flex; align-items: center; padding: 0 16px;
   border: 1.5px solid var(--cocoa); background: var(--cream-2); border-radius: 12px;
-  font-family: var(--ui); font-size: 14.5px; font-weight: 700;
+  font-family: var(--ui); font-size: 14.5px; font-weight: 600;
   color: var(--cocoa); cursor: pointer;
   font-variant-numeric: tabular-nums;
 }
@@ -348,7 +348,7 @@ h1 {
 .fields { display: grid; gap: 12px; max-width: 420px; }
 .fields label { display: block; }
 .fields span {
-  display: block; font-family: var(--ui); font-size: 13px; font-weight: 700;
+  display: block; font-family: var(--ui); font-size: 13.5px; font-weight: 600;
   color: var(--mocha); margin-bottom: 5px;
 }
 .fields input {
@@ -362,7 +362,7 @@ h1 {
   margin-top: 32px; padding-top: 22px; border-top: 2px solid var(--cocoa);
   display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
 }
-.total .sum { font-family: var(--display); font-weight: 400; font-size: 28px;
+.total .sum { font-family: var(--display); font-weight: 900; font-size: 26px;
   font-variant-numeric: tabular-nums; }
 .total .sum small { display: block; font-family: var(--ui);
   font-weight: 400; font-size: 13px;

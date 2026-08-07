@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Half Past Six — type test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Alfa+Slab+One&family=Montserrat:wght@800;900&family=Oswald:wght@600;700&family=Lato:wght@400;700;900&family=Nunito+Sans:wght@400;700;900&family=Source+Sans+3:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #111; }
+  .v {
+    position: relative; height: 620px; overflow: hidden;
+    color: #FFF9EE; background: #180A02;
+  }
+  .v img { position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: 74% 38%; }
+  .v .tint { position: absolute; inset: 0;
+    background: linear-gradient(99deg, rgba(24,10,2,.92) 0%, rgba(24,10,2,.72) 42%, rgba(24,10,2,.34) 70%, rgba(24,10,2,.22) 100%); }
+  .in { position: relative; max-width: 1200px; margin: 0 auto; padding: 34px 40px;
+    display: grid; grid-template-columns: 1fr 430px; gap: 64px; align-items: center; height: 100%; }
+  .tag { position: absolute; top: 16px; right: 20px; z-index: 2;
+    background: #FFF9EE; color: #2B1507; font: 700 15px/1 sans-serif;
+    padding: 8px 14px; border-radius: 6px; }
+  .stamp { font-size: 14px; color: #E9CFA6; margin: 0 0 14px; }
+  .stamp b { color: #FFF9EE; }
+  .h { margin: 0 0 16px; color: #FFF9EE; }
+  .lede { font-size: 17px; line-height: 1.5; color: #E9CFA6; margin: 0 0 24px; max-width: 40ch; }
+  .cta { display: inline-flex; align-items: center; min-height: 54px; padding: 0 30px;
+    background: #E8630C; color: #2B1507; border-radius: 999px; font-size: 17px; }
+  .card { background: #FFF9EE; color: #2B1507; border-radius: 18px;
+    box-shadow: 0 34px 70px -30px rgba(0,0,0,.65); overflow: hidden; }
+  .card .hd { padding: 15px 20px 11px; border-bottom: 2px solid #2B1507;
+    display: flex; justify-content: space-between; align-items: baseline; }
+  .card .hd .when { font-size: 13px; color: #8A6845; }
+  .card .r { padding: 14px 20px; display: grid; grid-template-columns: 1fr auto;
+    gap: 2px 16px; align-items: center; border-bottom: 1px solid #EADCC0; }
+  .card .r:last-child { border-bottom: 0; }
+  .card .nm { font-size: 16.5px; }
+  .card .ds { grid-column: 1; font-size: 13.5px; color: #8A6845; }
+  .card .ct { grid-column: 2; grid-row: 1 / span 2; font-size: 44px; line-height: 1; }
+  .card .gn .nm { text-decoration: line-through; color: #8A6845; }
+  .card .gn .ct { font-size: 13.5px; color: #8A6845; }
+
+  /* 1 — Anton + Lato: постер у печи (Oven & Co) */
+  .v1 .h { font: 400 76px/1.02 "Anton"; text-transform: uppercase; letter-spacing: 0; }
+  .v1 .stamp, .v1 .lede, .v1 .ds, .v1 .when, .v1 .gn .ct { font-family: "Lato"; }
+  .v1 .cta { font: 900 17px "Lato"; }
+  .v1 .nm { font: 700 16.5px "Lato"; }
+  .v1 .hd b { font: 400 20px "Anton"; text-transform: uppercase; }
+  .v1 .ct { font-family: "Anton"; }
+
+  /* 2 — Alfa Slab One + Nunito Sans: вывеска (Loafly) */
+  .v2 .h { font: 400 58px/1.08 "Alfa Slab One"; }
+  .v2 .stamp, .v2 .lede, .v2 .ds, .v2 .when, .v2 .gn .ct { font-family: "Nunito Sans"; }
+  .v2 .cta { font: 900 17px "Nunito Sans"; }
+  .v2 .nm { font: 700 16.5px "Nunito Sans"; }
+  .v2 .hd b { font: 400 19px "Alfa Slab One"; }
+  .v2 .ct { font-family: "Alfa Slab One"; }
+
+  /* 3 — Montserrat 900 + Source Sans 3: местный бизнес */
+  .v3 .h { font: 900 62px/1.04 "Montserrat"; letter-spacing: -0.01em; }
+  .v3 .stamp, .v3 .lede, .v3 .ds, .v3 .when, .v3 .gn .ct { font-family: "Source Sans 3"; }
+  .v3 .cta { font: 700 17px "Montserrat"; }
+  .v3 .nm { font: 600 16.5px "Source Sans 3"; }
+  .v3 .hd b { font: 800 19px "Montserrat"; }
+  .v3 .ct { font: 900 44px "Montserrat"; }
+
+  /* 4 — Oswald + Roboto: меловая доска едальни */
+  .v4 .h { font: 600 68px/1.04 "Oswald"; text-transform: uppercase; }
+  .v4 .stamp, .v4 .lede, .v4 .ds, .v4 .when, .v4 .gn .ct { font-family: "Roboto"; }
+  .v4 .cta { font: 700 17px "Oswald"; }
+  .v4 .nm { font: 500 16.5px "Roboto"; }
+  .v4 .hd b { font: 600 20px "Oswald"; text-transform: uppercase; }
+  .v4 .ct { font-family: "Oswald"; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="v v1" id="v1">
+  <img crossorigin="anonymous" alt="" src="https://images.pexels.com/photos/27418970/pexels-photo-27418970/free-photo-of-a-loaf-of-bread-on-a-brown-cloth.jpeg?auto=compress&cs=tinysrgb&w=1920">
+  <div class="tint"></div>
+  <span class="tag">1 · Anton + Lato</span>
+  <div class="in">
+    <div>
+      <p class="stamp">Friday, August 7 · 8:58 AM · <b>second bake at 11:00</b> · baking since 2018</p>
+      <p class="h">Today's bake, and what's left of it.</p>
+      <p class="lede">We bake twice a morning and stop when the flour runs out. Reserve what you want, pay at the counter.</p>
+      <span class="cta">Reserve for pickup</span>
+    </div>
+    <div class="card">
+      <div class="hd"><b>On the board</b><span class="when">counted at 8:58 AM</span></div>
+      <div class="r"><span class="nm">Country sourdough</span><span class="ds">$9.00 · 1.1 kg · 36-hour levain</span><span class="ct">12</span></div>
+      <div class="r gn"><span class="nm">Morning bun</span><span class="ds">$4.00 · currants, multigrain</span><span class="ct">gone 8:52 AM</span></div>
+      <div class="r"><span class="nm">Buckwheat croissant</span><span class="ds">$4.50 · first bake only</span><span class="ct">5</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="v v2" id="v2">
+  <img crossorigin="anonymous" alt="" src="https://images.pexels.com/photos/27418970/pexels-photo-27418970/free-photo-of-a-loaf-of-bread-on-a-brown-cloth.jpeg?auto=compress&cs=tinysrgb&w=1920">
+  <div class="tint"></div>
+  <span class="tag">2 · Alfa Slab One + Nunito Sans</span>
+  <div class="in">
+    <div>
+      <p class="stamp">Friday, August 7 · 8:58 AM · <b>second bake at 11:00</b> · baking since 2018</p>
+      <p class="h">Today's bake, and what's left of it.</p>
+      <p class="lede">We bake twice a morning and stop when the flour runs out. Reserve what you want, pay at the counter.</p>
+      <span class="cta">Reserve for pickup</span>
+    </div>
+    <div class="card">
+      <div class="hd"><b>On the board</b><span class="when">counted at 8:58 AM</span></div>
+      <div class="r"><span class="nm">Country sourdough</span><span class="ds">$9.00 · 1.1 kg · 36-hour levain</span><span class="ct">12</span></div>
+      <div class="r gn"><span class="nm">Morning bun</span><span class="ds">$4.00 · currants, multigrain</span><span class="ct">gone 8:52 AM</span></div>
+      <div class="r"><span class="nm">Buckwheat croissant</span><span class="ds">$4.50 · first bake only</span><span class="ct">5</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="v v3" id="v3">
+  <img crossorigin="anonymous" alt="" src="https://images.pexels.com/photos/27418970/pexels-photo-27418970/free-photo-of-a-loaf-of-bread-on-a-brown-cloth.jpeg?auto=compress&cs=tinysrgb&w=1920">
+  <div class="tint"></div>
+  <span class="tag">3 · Montserrat 900 + Source Sans 3</span>
+  <div class="in">
+    <div>
+      <p class="stamp">Friday, August 7 · 8:58 AM · <b>second bake at 11:00</b> · baking since 2018</p>
+      <p class="h">Today's bake, and what's left of it.</p>
+      <p class="lede">We bake twice a morning and stop when the flour runs out. Reserve what you want, pay at the counter.</p>
+      <span class="cta">Reserve for pickup</span>
+    </div>
+    <div class="card">
+      <div class="hd"><b>On the board</b><span class="when">counted at 8:58 AM</span></div>
+      <div class="r"><span class="nm">Country sourdough</span><span class="ds">$9.00 · 1.1 kg · 36-hour levain</span><span class="ct">12</span></div>
+      <div class="r gn"><span class="nm">Morning bun</span><span class="ds">$4.00 · currants, multigrain</span><span class="ct">gone 8:52 AM</span></div>
+      <div class="r"><span class="nm">Buckwheat croissant</span><span class="ds">$4.50 · first bake only</span><span class="ct">5</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="v v4" id="v4">
+  <img crossorigin="anonymous" alt="" src="https://images.pexels.com/photos/27418970/pexels-photo-27418970/free-photo-of-a-loaf-of-bread-on-a-brown-cloth.jpeg?auto=compress&cs=tinysrgb&w=1920">
+  <div class="tint"></div>
+  <span class="tag">4 · Oswald + Roboto</span>
+  <div class="in">
+    <div>
+      <p class="stamp">Friday, August 7 · 8:58 AM · <b>second bake at 11:00</b> · baking since 2018</p>
+      <p class="h">Today's bake, and what's left of it.</p>
+      <p class="lede">We bake twice a morning and stop when the flour runs out. Reserve what you want, pay at the counter.</p>
+      <span class="cta">Reserve for pickup</span>
+    </div>
+    <div class="card">
+      <div class="hd"><b>On the board</b><span class="when">counted at 8:58 AM</span></div>
+      <div class="r"><span class="nm">Country sourdough</span><span class="ds">$9.00 · 1.1 kg · 36-hour levain</span><span class="ct">12</span></div>
+      <div class="r gn"><span class="nm">Morning bun</span><span class="ds">$4.00 · currants, multigrain</span><span class="ct">gone 8:52 AM</span></div>
+      <div class="r"><span class="nm">Buckwheat croissant</span><span class="ds">$4.50 · first bake only</span><span class="ct">5</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
