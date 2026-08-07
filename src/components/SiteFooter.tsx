@@ -22,7 +22,7 @@ export default function SiteFooter() {
             <Link
               key={l.href}
               href={l.href}
-              className="inline-flex min-h-11 items-center px-2 text-sm font-semibold text-mocha hover:text-cocoa"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center px-2 text-sm font-semibold text-mocha hover:text-cocoa"
             >
               {l.label}
             </Link>
