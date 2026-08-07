@@ -1,29 +1,38 @@
-/* Half Past Six — макет фазы 2. Не боевой код.
+/* Half Past Six — макет фазы 2, направление «горячая корка». Не боевой код.
    Шрифты здесь тянутся с Google Fonts ради скорости итерации.
    В продакшене они уезжают на свой домен (правило «ноль внешних скриптов»).
 
-   Ролей шрифта две, не три. Моноширинная роль снята на воротах приёмки:
-   мono-капслук с разрядкой — сам по себе признак ИИ-шаблона. Метки и цены
-   набираются курсивом текстового серифа, как в настоящих меню; служебные
-   заголовки — дисплейным гротеском строчными. */
+   Направление №2, после ворот приёмки: первое («холодная мука + пихта»)
+   заказчик снял с формулировкой «слишком тихо и сухо». Гарнитуры и
+   компоновка по диагнозу не виноваты — меняются палитра, масса и масштаб.
+   Материал теперь из печи, а не со стального стола: корка, масло, рожь.
+
+   Ролей шрифта по-прежнему две. Метки и цены — курсив текстового серифа,
+   служебные заголовки — дисплейный гротеск строчными. */
 
 :root {
   /* Поверхности */
-  --flour:    #EDEDE6;  /* база страницы: мука на стальном столе, холодная, не кремовая */
-  --linen:    #FBFAF8;  /* поднятые поверхности: карточки, доска */
-  --kraft:    #C9B79A;  /* бумажный пакет. Только редкими панелями */
+  --wheat:  #ECDDBE;  /* база страницы: подрумяненная пшеничная бумага, не кремовая */
+  --paper:  #F7EFDC;  /* светлые карточки и светлый текст на тёмном */
+  --rye:    #2A1A0A;  /* тёмная плита: доска, тёмные панели */
+  --rye-2:  #1D1103;  /* шапка и подвал доски, глубже плиты */
 
-  /* Текст — три ступени, четвёртая на светлом не помещается */
-  --iron:     #1B211E;  /* основной */
-  --iron-2:   #4C534F;  /* вторичный  6.7:1 */
-  --iron-3:   #616863;  /* мета, подписи  4.9:1 */
+  /* Текст на светлом — три ступени, как и раньше */
+  --ink:    #2B1C0C;  /* основной */
+  --ink-2:  #5C452B;  /* вторичный */
+  --ink-3:  #75593A;  /* мета, подписи */
 
-  /* Акцент. Одна работа — целевая кнопка. Больше нигде, включая ссылки,
-     выбранные состояния и фокус */
-  --fir:      #1D5A3B;  /* заливка под белым 8.2:1 */
-  --fir-deep: #154129;  /* ховер заливки */
+  /* Текст на тёмной плите — своя шкала */
+  --tan:      #C7A876;  /* мета на тёмном */
+  --tan-dim:  #A98F63;  /* приглушённое: кончившиеся позиции */
 
-  --rule:     #D8D8CE;
+  /* Акцент. Одна работа — целевая кнопка. Стратегия перевёрнута:
+     вместо тёмной заливки под белым — яркая заливка под тёмным текстом */
+  --butter:      #F3B229;  /* сливочное масло / яичная помазка */
+  --butter-deep: #E09E0E;  /* ховер заливки */
+
+  --rule:      #CDBA92;  /* разделители на светлом */
+  --rule-dark: #4A3620;  /* разделители на тёмной плите */
 
   --display: "Bricolage Grotesque", system-ui, sans-serif;
   --body:    "Newsreader", Georgia, serif;
@@ -35,8 +44,8 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--flour);
-  color: var(--iron);
+  background: var(--wheat);
+  color: var(--ink);
   font-family: var(--body);
   font-size: 16px;
   line-height: 1.55;
@@ -48,7 +57,7 @@ body {
 /* Мета-текст: цены, время, подписи. Курсив серифа, строчные, без разрядки */
 .meta-text {
   font-family: var(--body); font-style: italic;
-  font-size: 13.5px; color: var(--iron-3); letter-spacing: 0;
+  font-size: 13.5px; color: var(--ink-3); letter-spacing: 0;
   font-variant-numeric: lining-nums tabular-nums;
 }
 
@@ -61,8 +70,8 @@ body {
 }
 .brand {
   font-family: var(--display);
-  font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
-  text-decoration: none; color: var(--iron); line-height: 1.1;
+  font-weight: 750; font-size: 18px; letter-spacing: -0.02em;
+  text-decoration: none; color: var(--ink); line-height: 1.1;
   white-space: nowrap;
   /* Логотип — тоже ссылка, значит тоже 44px */
   min-height: 44px; display: inline-flex; flex-direction: column; justify-content: center;
@@ -70,18 +79,18 @@ body {
 /* Приписка города съедала две строки на 375 — на мобильном её нет,
    адрес и так стоит в блоке Visit */
 .brand span { display: none; font-family: var(--body); font-style: italic;
-  font-size: 12.5px; color: var(--iron-3); font-weight: 400; margin-top: 1px;
+  font-size: 12.5px; color: var(--ink-3); font-weight: 400; margin-top: 1px;
   letter-spacing: 0; }
 
 .site-nav { display: flex; gap: 0; margin-right: -9px; }
 .site-nav a {
   font-family: var(--display); font-size: 14px; font-weight: 500;
   letter-spacing: 0;
-  color: var(--iron-2); text-decoration: none;
+  color: var(--ink-2); text-decoration: none;
   min-height: 44px; display: inline-flex; align-items: center; padding: 0 9px;
 }
-.site-nav a[aria-current] { color: var(--iron); box-shadow: inset 0 -2px 0 var(--iron); }
-.site-nav a:hover { color: var(--iron); }
+.site-nav a[aria-current] { color: var(--ink); box-shadow: inset 0 -2px 0 var(--ink); }
+.site-nav a:hover { color: var(--ink); }
 
 /* ---------- Первый экран ---------- */
 
@@ -90,102 +99,106 @@ body {
 .stamp {
   font-family: var(--body); font-style: italic;
   font-size: 14.5px; letter-spacing: 0;
-  color: var(--iron-3); margin: 0 0 14px;
+  color: var(--ink-3); margin: 0 0 14px;
   display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline;
   font-variant-numeric: lining-nums;
 }
 /* Разделительные точки сидят в конце сегмента, а не отдельными флекс-детьми:
    иначе при переносе точка повисает в начале строки и читается как маркер */
-.stamp b { color: var(--iron-2); font-weight: 500; white-space: nowrap; }
-.stamp b .sep { color: var(--iron-3); font-weight: 400; }
+.stamp b { color: var(--ink-2); font-weight: 500; white-space: nowrap; }
+.stamp b .sep { color: var(--ink-3); font-weight: 400; }
 
+/* Смелее по диагнозу заказчика: вес 800, крупнее, плотнее интерлиньяж */
 h1 {
   font-family: var(--display);
-  font-weight: 750; font-size: clamp(32px, 8.4vw, 60px);
-  line-height: 1.02; letter-spacing: -0.03em;
-  margin: 0 0 14px; max-width: 15ch;
+  font-weight: 800; font-size: clamp(34px, 9vw, 72px);
+  line-height: 0.98; letter-spacing: -0.035em;
+  margin: 0 0 16px; max-width: 15ch;
 }
 .lede {
-  font-size: 16.5px; line-height: 1.45; color: var(--iron-2);
+  font-size: 16.5px; line-height: 1.45; color: var(--ink-2);
   margin: 0 0 22px; max-width: 40ch;
 }
 
 .cta {
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 52px; padding: 0 26px;
-  background: var(--fir); color: #fff; text-decoration: none;
-  font-family: var(--display); font-weight: 650; font-size: 17px;
+  background: var(--butter); color: var(--ink); text-decoration: none;
+  font-family: var(--display); font-weight: 700; font-size: 17px;
   letter-spacing: -0.01em; border: 0; cursor: pointer;
   border-radius: 3px;
 }
-.cta:hover { background: var(--fir-deep); }
+.cta:hover { background: var(--butter-deep); }
 .cta-note {
   font-family: var(--body); font-style: italic;
-  font-size: 13.5px; color: var(--iron-3);
+  font-size: 13.5px; color: var(--ink-3);
   margin: 10px 0 0;
 }
 
 /* ---------- Доска: подпись проекта ---------- */
-/* Аудит по чек-листу, пункт 02: linen на flour растворялась в фоне.
-   Доска обязана читаться как доска за прилавком — тёмная планка-шапка,
-   рамка в цвет чугуна, отрыв тенью от стола */
+/* Направление «горячая корка»: доска — целиком тёмная плита ржаного,
+   как меловая доска за прилавком. Единственная тёмная масса страницы,
+   светлые числа остатка на ней — самое громкое после h1 */
 
 .board {
-  background: var(--linen);
-  border: 1px solid var(--iron);
+  background: var(--rye);
+  color: var(--paper);
+  border: 1px solid var(--rye);
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 18px 44px -26px rgba(27, 33, 30, 0.45);
+  box-shadow: 0 22px 48px -24px rgba(42, 26, 10, 0.55);
 }
 .board-head {
   display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
   padding: 14px 16px;
-  background: var(--iron);
+  background: var(--rye-2);
+  border-bottom: 1px solid var(--rule-dark);
 }
 .board-head h2 {
   font-family: var(--display); font-size: 15px; font-weight: 600;
-  letter-spacing: -0.01em; margin: 0; color: var(--linen);
+  letter-spacing: -0.01em; margin: 0; color: var(--paper);
 }
 .board-head .when { font-family: var(--body); font-style: italic;
-  font-size: 13px; color: var(--flour);
+  font-size: 13px; color: var(--tan);
   font-variant-numeric: lining-nums; }
 
 .row {
   display: grid; grid-template-columns: 1fr auto;
   gap: 4px 16px; align-items: center;
-  padding: 14px 16px; border-bottom: 1px solid var(--rule);
+  padding: 14px 16px; border-bottom: 1px solid var(--rule-dark);
 }
 .row:last-child { border-bottom: 0; }
-.row .name { font-size: 17px; line-height: 1.25; }
+.row .name { font-size: 17px; line-height: 1.25; color: var(--paper); }
 .row .desc {
   grid-column: 1; font-family: var(--body); font-style: italic;
-  font-size: 13.5px; color: var(--iron-3); letter-spacing: 0;
+  font-size: 13.5px; color: var(--tan); letter-spacing: 0;
   font-variant-numeric: lining-nums;
 }
 .row .count {
   grid-column: 2; grid-row: 1 / span 2;
-  font-family: var(--display); font-weight: 700;
-  font-size: 34px; line-height: 1; letter-spacing: -0.04em;
+  font-family: var(--display); font-weight: 750;
+  font-size: 36px; line-height: 1; letter-spacing: -0.04em;
   text-align: right; font-variant-numeric: tabular-nums;
+  color: var(--paper);
 }
 .row .count small {
   display: block; font-family: var(--body); font-style: italic;
   font-weight: 400; font-size: 12.5px; letter-spacing: 0;
-  color: var(--iron-3); margin-top: 3px;
+  color: var(--tan); margin-top: 3px;
 }
 
 /* Кончилось. Никакого красного — иерархия идёт насыщенностью, а не цветом */
 .row.gone .name { text-decoration: line-through; text-decoration-thickness: 1.5px;
-  text-decoration-color: var(--iron-3); color: var(--iron-3); }
+  text-decoration-color: var(--tan-dim); color: var(--tan-dim); }
 .row.gone .count { font-family: var(--body); font-style: italic;
   font-size: 13.5px; font-weight: 400;
-  letter-spacing: 0; color: var(--iron-3); line-height: 1.4; max-width: 14ch;
+  letter-spacing: 0; color: var(--tan-dim); line-height: 1.4; max-width: 14ch;
   font-variant-numeric: lining-nums; }
 
 /* Ещё не выпекли */
 .row.soon .count { font-family: var(--body); font-style: italic;
   font-size: 13.5px; font-weight: 400;
-  letter-spacing: 0; color: var(--iron-2); line-height: 1.4; max-width: 14ch;
+  letter-spacing: 0; color: var(--tan); line-height: 1.4; max-width: 14ch;
   font-variant-numeric: lining-nums; }
 
 /* Обе служебные подписи держим в одну строку — иначе «gone 8:52 AM» ломается
@@ -193,19 +206,19 @@ h1 {
 .row.gone .count, .row.soon .count { white-space: nowrap; }
 
 .board-foot {
-  padding: 12px 16px; border-top: 1px solid var(--rule);
-  background: var(--flour);
+  padding: 12px 16px; border-top: 1px solid var(--rule-dark);
+  background: var(--rye-2);
   font-family: var(--body); font-style: italic;
-  font-size: 13.5px; color: var(--iron-3);
+  font-size: 13.5px; color: var(--tan);
   display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
   font-variant-numeric: lining-nums;
 }
-/* Ссылка — в цвете текста с подчёркиванием. Зелёный занят кнопкой.
+/* Ссылка — в цвете текста плиты с подчёркиванием. Акцент занят кнопкой.
    Тап-зона 44px через отрицательные поля, чтобы строка не распухала */
-.board-foot a { color: var(--iron-2); text-decoration: none;
+.board-foot a { color: var(--tan); text-decoration: none;
   border-bottom: 1px solid currentColor; padding-bottom: 1px;
   display: inline-flex; align-items: center; min-height: 44px; margin: -13px 0; }
-.board-foot a:hover { color: var(--iron); }
+.board-foot a:hover { color: var(--paper); }
 
 /* ---------- Десктоп ---------- */
 
@@ -216,16 +229,15 @@ h1 {
   .site-nav a { font-size: 14.5px; padding: 0 11px; }
   .site-head { padding: 18px 0 16px; }
 
-  /* Аудит, пункты 01+03: контент кончался на 637px из 900 — 263px мёртвой
-     муки внизу и 204px под левой колонкой. Сгиб занимает весь экран за
-     вычетом шапки (79px) и центрирует обе колонки по вертикали */
+  /* Аудит, пункты 01+03: сгиб занимает весь экран за вычетом шапки (79px)
+     и центрирует обе колонки по вертикали */
   .fold {
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(430px, 520px);
     gap: 64px; align-items: center; padding: 48px 0;
     min-height: calc(100vh - 79px);
   }
   .lede { font-size: 18.5px; margin-bottom: 28px; }
-  .row .count { font-size: 46px; }
+  .row .count { font-size: 54px; }
   .row .name { font-size: 18px; }
   /* Пункт 03: строки доски дышат, а не считают пиксели */
   .row { padding: 19px 22px; }
@@ -240,87 +252,87 @@ h1 {
 
 .order-page { padding: 24px 0 56px; max-width: 760px; }
 
-.order-page h1 { font-size: clamp(28px, 7vw, 42px); margin-bottom: 10px; max-width: 20ch; }
+.order-page h1 { font-size: clamp(30px, 7.5vw, 46px); margin-bottom: 10px; max-width: 20ch; }
 
 .step { margin: 34px 0 0; }
 .step > h2 {
   font-family: var(--display); font-size: 15.5px; font-weight: 620;
-  letter-spacing: -0.01em; color: var(--iron); margin: 0 0 12px;
+  letter-spacing: -0.01em; color: var(--ink); margin: 0 0 12px;
   display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
 }
 .step > h2 em {
   font-style: italic; font-family: var(--body); font-weight: 400;
-  color: var(--iron-3); font-size: 13.5px; letter-spacing: 0;
+  color: var(--ink-3); font-size: 13.5px; letter-spacing: 0;
 }
 
 .pick {
   display: grid; grid-template-columns: 1fr auto; gap: 6px 16px;
   align-items: center; padding: 15px 16px;
-  border: 1px solid var(--rule); border-bottom: 0; background: var(--linen);
+  border: 1px solid var(--rule); border-bottom: 0; background: var(--paper);
 }
 .pick:first-of-type { border-radius: 4px 4px 0 0; }
 .pick:last-of-type { border-bottom: 1px solid var(--rule); border-radius: 0 0 4px 4px; }
 .pick .name { font-size: 17px; line-height: 1.25; }
 .pick .meta {
   grid-column: 1; font-family: var(--body); font-style: italic;
-  font-size: 13.5px; color: var(--iron-3);
+  font-size: 13.5px; color: var(--ink-3);
   font-variant-numeric: lining-nums;
 }
-.pick .meta b { color: var(--iron-2); font-weight: 500; }
+.pick .meta b { color: var(--ink-2); font-weight: 500; }
 
 .stepper { grid-column: 2; grid-row: 1 / span 2; display: flex; align-items: center; gap: 2px; }
 .stepper button {
-  width: 44px; height: 44px; border: 1px solid var(--rule); background: var(--flour);
-  color: var(--iron); font-family: var(--display); font-size: 18px; line-height: 1;
+  width: 44px; height: 44px; border: 1px solid var(--rule); background: var(--wheat);
+  color: var(--ink); font-family: var(--display); font-size: 18px; line-height: 1;
   cursor: pointer; border-radius: 3px;
 }
-.stepper button:hover:not(:disabled) { border-color: var(--iron-3); }
-.stepper button:disabled { color: var(--iron-3); opacity: .5; cursor: not-allowed; }
+.stepper button:hover:not(:disabled) { border-color: var(--ink-3); }
+.stepper button:disabled { color: var(--ink-3); opacity: .5; cursor: not-allowed; }
 .stepper .qty {
   min-width: 40px; text-align: center; font-family: var(--display);
   font-weight: 700; font-size: 21px; font-variant-numeric: tabular-nums;
 }
 
-.pick.gone { background: var(--flour); }
+.pick.gone { background: var(--wheat); }
 .pick.gone .name { text-decoration: line-through; text-decoration-thickness: 1.5px;
-  text-decoration-color: var(--iron-3); color: var(--iron-3); }
+  text-decoration-color: var(--ink-3); color: var(--ink-3); }
 .pick .later {
   grid-column: 2; grid-row: 1 / span 2; text-align: right;
   font-family: var(--body); font-style: italic;
-  font-size: 13.5px; color: var(--iron-2);
+  font-size: 13.5px; color: var(--ink-2);
   line-height: 1.45; max-width: 16ch;
   font-variant-numeric: lining-nums;
 }
-.pick .later a { color: var(--iron-2); text-decoration: none;
+.pick .later a { color: var(--ink-2); text-decoration: none;
   border-bottom: 1px solid currentColor;
   /* Ссылка на вторую выпечку — тоже целевое действие, 44px обязательны */
   display: inline-flex; align-items: center; min-height: 44px; text-align: right; }
-.pick .later a:hover { color: var(--iron); }
+.pick .later a:hover { color: var(--ink); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
   min-height: 44px; display: inline-flex; align-items: center; padding: 0 15px;
-  border: 1px solid var(--rule); background: var(--linen); border-radius: 3px;
+  border: 1px solid var(--rule); background: var(--paper); border-radius: 3px;
   font-family: var(--display); font-size: 14.5px; font-weight: 500;
-  color: var(--iron); cursor: pointer;
+  color: var(--ink); cursor: pointer;
   font-variant-numeric: lining-nums tabular-nums;
 }
-.chip[aria-pressed="true"] { border-color: var(--iron); box-shadow: inset 0 0 0 1px var(--iron); }
-.chip:disabled { color: var(--iron-3); background: var(--flour); cursor: not-allowed;
-  text-decoration: line-through; text-decoration-color: var(--iron-3); }
+.chip[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.chip:disabled { color: var(--ink-3); background: var(--wheat); cursor: not-allowed;
+  text-decoration: line-through; text-decoration-color: var(--ink-3); }
 
 .fields { display: grid; gap: 12px; max-width: 420px; }
 .fields label { display: block; }
 .fields span {
   display: block; font-family: var(--display); font-size: 13px; font-weight: 550;
-  letter-spacing: 0; color: var(--iron-2); margin-bottom: 5px;
+  letter-spacing: 0; color: var(--ink-2); margin-bottom: 5px;
 }
 .fields input {
   width: 100%; min-height: 48px; padding: 0 13px;
-  border: 1px solid var(--rule); border-radius: 3px; background: var(--linen);
-  font-family: var(--body); font-size: 16.5px; color: var(--iron);
+  border: 1px solid var(--rule); border-radius: 3px; background: var(--paper);
+  font-family: var(--body); font-size: 16.5px; color: var(--ink);
 }
-.fields input:focus { outline: 2px solid var(--iron); outline-offset: 1px; border-color: var(--iron); }
+.fields input:focus { outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink); }
 
 .total {
   margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--rule);
@@ -330,7 +342,7 @@ h1 {
   letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .total .sum small { display: block; font-family: var(--body); font-style: italic;
   font-weight: 400; font-size: 13px; letter-spacing: 0;
-  color: var(--iron-3); margin-top: 3px; font-variant-numeric: lining-nums; }
+  color: var(--ink-3); margin-top: 3px; font-variant-numeric: lining-nums; }
 .pay-note { font-family: var(--body); font-style: italic;
-  font-size: 14px; color: var(--iron-3);
+  font-size: 14px; color: var(--ink-3);
   margin: 14px 0 0; max-width: 46ch; line-height: 1.55; }
