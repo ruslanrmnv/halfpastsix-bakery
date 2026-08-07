@@ -6,88 +6,95 @@
 <title>Half Past Six — mockup, home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Archivo:wght@400..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="mockup.css">
 </head>
-<body>
+<body class="home">
 
-<div class="wrap">
+<div class="hero">
+  <!-- Фото: Pexels 27418970, хотлинк только в макете. В бою — к себе на домен,
+       проверка лицензии в фазе 7 -->
+  <img class="hero-photo" crossorigin="anonymous" alt=""
+    src="https://images.pexels.com/photos/27418970/pexels-photo-27418970/free-photo-of-a-loaf-of-bread-on-a-brown-cloth.jpeg?auto=compress&cs=tinysrgb&w=1920">
+  <div class="hero-tint"></div>
 
-  <header class="site-head">
-    <a class="brand" href="#">Half Past Six<span>Portland, Oregon</span></a>
-    <nav class="site-nav">
-      <a href="#" aria-current="page">Today</a>
-      <a href="#">Menu</a>
-      <a href="order.html">Order</a>
-      <a href="#">Visit</a>
-    </nav>
-  </header>
+  <div class="wrap hero-inner">
 
-  <main class="fold">
+    <header class="site-head">
+      <a class="brand" href="#">Half Past Six<span>Portland, Oregon</span></a>
+      <nav class="site-nav">
+        <a href="#" aria-current="page">Today</a>
+        <a href="#">Menu</a>
+        <a href="order.html">Order</a>
+        <a href="#">Visit</a>
+      </nav>
+    </header>
 
-    <div class="col-left">
-      <p class="stamp">
-        <span>Friday, August 7 · 8:58 AM ·</span>
-        <b>second bake at 11:00 <span class="sep">·</span></b>
-        <span>baking since 2018</span>
-      </p>
+    <main class="fold">
 
-      <h1>Today's bake, and what's left of it.</h1>
+      <div class="col-left">
+        <p class="stamp">
+          <span>Friday, August 7 · 8:58 AM ·</span>
+          <b>second bake at 11:00 <span class="sep">·</span></b>
+          <span>baking since 2018</span>
+        </p>
 
-      <p class="lede">
-        We bake twice a morning and stop when the flour runs out. So instead of
-        hiding the count, we put it on the door. Reserve what you want, pay at
-        the counter.
-      </p>
+        <h1>Today's bake, and what's left of it.</h1>
 
-      <a class="cta" href="order.html">Reserve for pickup</a>
-      <p class="cta-note">Free · 90 seconds · no account</p>
-    </div>
+        <p class="lede">
+          We bake twice a morning and stop when the flour runs out.
+          Reserve what you want, pay at the counter.
+        </p>
 
-    <section class="board" aria-label="What is left today">
-      <div class="board-head">
-        <h2>On the board</h2>
-        <span class="when">counted at 8:58 AM</span>
+        <a class="cta" href="order.html">Reserve for pickup</a>
+        <p class="cta-note">Free · 90 seconds · no account</p>
       </div>
 
-      <div class="row">
-        <span class="name">Country sourdough</span>
-        <span class="desc">$9.00 · 1.1 kg · 36-hour levain</span>
-        <span class="count">12<small>left</small></span>
-      </div>
+      <section class="board" aria-label="What is left today">
+        <div class="board-head">
+          <h2>On the board</h2>
+          <span class="when">counted at 8:58 AM</span>
+        </div>
 
-      <div class="row gone">
-        <span class="name">Morning bun</span>
-        <span class="desc">$4.00 · currants, multigrain</span>
-        <span class="count">gone 8:52 AM</span>
-      </div>
+        <div class="row">
+          <span class="name">Country sourdough</span>
+          <span class="desc">$9.00 · 1.1 kg · 36-hour levain</span>
+          <span class="count">12<small>left</small></span>
+        </div>
 
-      <div class="row">
-        <span class="name">Buckwheat croissant</span>
-        <span class="desc">$4.50 · first bake only</span>
-        <span class="count">5<small>left</small></span>
-      </div>
+        <div class="row gone">
+          <span class="name">Morning bun</span>
+          <span class="desc">$4.00 · currants, multigrain</span>
+          <span class="count">gone 8:52 AM</span>
+        </div>
 
-      <div class="row soon">
-        <span class="name">Rye &amp; caraway</span>
-        <span class="desc">$9.50 · 900 g</span>
-        <span class="count">out at 11:00</span>
-      </div>
+        <div class="row">
+          <span class="name">Buckwheat croissant</span>
+          <span class="desc">$4.50 · first bake only</span>
+          <span class="count">5<small>left</small></span>
+        </div>
 
-      <div class="row">
-        <span class="name">Ham &amp; gruyère handpie</span>
-        <span class="desc">$6.75 · warm until noon</span>
-        <span class="count">9<small>left</small></span>
-      </div>
+        <div class="row soon">
+          <span class="name">Rye &amp; caraway</span>
+          <span class="desc">$9.50 · 900 g</span>
+          <span class="count">out at 11:00</span>
+        </div>
 
-      <div class="board-foot">
-        <span>41 of 96 items still on the shelf</span>
-        <a href="#">See the whole menu</a>
-      </div>
-    </section>
+        <div class="row">
+          <span class="name">Ham &amp; gruyère handpie</span>
+          <span class="desc">$6.75 · warm until noon</span>
+          <span class="count">9<small>left</small></span>
+        </div>
 
-  </main>
+        <div class="board-foot">
+          <span>41 of 96 items still on the shelf</span>
+          <a href="#">See the whole menu</a>
+        </div>
+      </section>
 
+    </main>
+
+  </div>
 </div>
 
 </body>
