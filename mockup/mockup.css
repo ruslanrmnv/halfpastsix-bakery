@@ -94,7 +94,10 @@ body {
   display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline;
   font-variant-numeric: lining-nums;
 }
-.stamp b { color: var(--iron-2); font-weight: 500; }
+/* Разделительные точки сидят в конце сегмента, а не отдельными флекс-детьми:
+   иначе при переносе точка повисает в начале строки и читается как маркер */
+.stamp b { color: var(--iron-2); font-weight: 500; white-space: nowrap; }
+.stamp b .sep { color: var(--iron-3); font-weight: 400; }
 
 h1 {
   font-family: var(--display);
@@ -213,17 +216,22 @@ h1 {
   .site-nav a { font-size: 14.5px; padding: 0 11px; }
   .site-head { padding: 18px 0 16px; }
 
+  /* Аудит, пункты 01+03: контент кончался на 637px из 900 — 263px мёртвой
+     муки внизу и 204px под левой колонкой. Сгиб занимает весь экран за
+     вычетом шапки (79px) и центрирует обе колонки по вертикали */
   .fold {
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(430px, 520px);
-    gap: 64px; align-items: start; padding: 56px 0 72px;
+    gap: 64px; align-items: center; padding: 48px 0;
+    min-height: calc(100vh - 79px);
   }
-  .fold > .col-left { padding-top: 6px; }
   .lede { font-size: 18.5px; margin-bottom: 28px; }
   .row .count { font-size: 46px; }
   .row .name { font-size: 18px; }
-  /* Отступы строк остаются пунктом 03 — здесь только иерархия */
-  .row { padding: 16px 20px; }
-  .board-head, .board-foot { padding-left: 20px; padding-right: 20px; }
+  /* Пункт 03: строки доски дышат, а не считают пиксели */
+  .row { padding: 19px 22px; }
+  .board-head { padding: 15px 22px; }
+  .board-foot { padding: 15px 22px; }
+  .board-foot a { margin: -16px 0; }
 }
 
 /* ================= Внутренний блок: заказ ================= */
