@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Primitive own mark: the "6" of the first bake on a cream ticket -->
+  <rect width="64" height="64" rx="14" fill="#2B1507"/>
+  <rect x="6" y="6" width="52" height="52" rx="10" fill="#FFF9EE"/>
+  <text x="32" y="47" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800" fill="#2B1507">6</text>
+</svg>

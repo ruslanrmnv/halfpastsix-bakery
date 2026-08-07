@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { montserrat, sourceSans } from "./fonts";
+import SiteFooter from "@/components/SiteFooter";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -13,8 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-cream font-ui text-cocoa">{children}</body>
+    <html lang="en" className={`${montserrat.variable} ${sourceSans.variable}`}>
+      <body className="bg-cream font-ui text-[16px] leading-[1.55] text-cocoa">
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

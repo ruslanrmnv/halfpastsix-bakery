@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
 /*
- * Tokens come straight from the accepted mockup (research/design-plan.md).
+ * Tokens come from the accepted phase-2 mockup (research/design-plan.md).
  * Direction 3 "витрина": dark crust photo as hero material, cocoa/cream,
  * one hot-orange accent with exactly one job — the target button.
- * Fonts are self-hosted in phase 4; the stacks below are the final names.
+ *
+ * Typography rules held by measurement: no italics anywhere, no positive
+ * letter-spacing, nothing lighter than 400 (decisions 2.27, 2.30).
  */
 @theme {
   --color-cocoa: #2b1507;
@@ -18,10 +20,54 @@
   --color-ember-deep: #c4500a;
   --color-line: #eadcc0;
 
-  --font-display: "Montserrat", system-ui, sans-serif;
-  --font-ui: "Source Sans 3", system-ui, sans-serif;
+  /* The mockup was measured at a 900px breakpoint, not Tailwind's 1024. */
+  --breakpoint-desk: 56.25rem;
 }
 
-/* No italics, no positive letter-spacing, nothing lighter than 400 —
-   client's diagnosis of AI-typography, held by measured counters
-   (decisions 2.27, 2.30). */
+@theme inline {
+  --font-display: var(--font-montserrat);
+  --font-ui: var(--font-source-sans);
+}
+
+/* Page container from the mockup: max 1200, 20px gutters. */
+@utility wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding-inline: 20px;
+}
+
+/* Hero scrim. Density is tuned against the real photo pixels — the phase-2
+   measurement walks the worst sampled point under each text block (≥5.9:1).
+   Mobile: dark top and bottom, breathing middle. Desktop: light runs
+   left→right so the text stands on dark cloth and the bread breathes. */
+.hero-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(24, 10, 2, 0.88) 0%,
+    rgba(24, 10, 2, 0.66) 46%,
+    rgba(24, 10, 2, 0.86) 100%
+  );
+}
+@media (min-width: 56.25rem) {
+  .hero-tint {
+    background: linear-gradient(
+      99deg,
+      rgba(24, 10, 2, 0.92) 0%,
+      rgba(24, 10, 2, 0.72) 42%,
+      rgba(24, 10, 2, 0.34) 70%,
+      rgba(24, 10, 2, 0.22) 100%
+    );
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
