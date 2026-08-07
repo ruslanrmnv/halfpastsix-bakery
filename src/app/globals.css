@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/*
+ * Tokens come straight from the accepted mockup (research/design-plan.md).
+ * Direction 3 "витрина": dark crust photo as hero material, cocoa/cream,
+ * one hot-orange accent with exactly one job — the target button.
+ * Fonts are self-hosted in phase 4; the stacks below are the final names.
+ */
+@theme {
+  --color-cocoa: #2b1507;
+  --color-cocoa-deep: #180a02;
+  --color-cream: #fff3df;
+  --color-cream-2: #fff9ee;
+  --color-latte: #e9cfa6;
+  --color-mocha: #6b4a2b;
+  --color-mocha-2: #8a6845;
+  --color-ember: #e8630c;
+  --color-ember-deep: #c4500a;
+  --color-line: #eadcc0;
+
+  --font-display: "Montserrat", system-ui, sans-serif;
+  --font-ui: "Source Sans 3", system-ui, sans-serif;
+}
+
+/* No italics, no positive letter-spacing, nothing lighter than 400 —
+   client's diagnosis of AI-typography, held by measured counters
+   (decisions 2.27, 2.30). */
