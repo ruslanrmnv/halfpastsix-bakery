@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Half Past Six — mockup, order</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mockup.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="site-head">
+    <a class="brand" href="index.html">Half Past Six<span>PORTLAND, OR</span></a>
+    <nav class="site-nav">
+      <a href="index.html">Today</a>
+      <a href="#">Menu</a>
+      <a href="order.html" aria-current="page">Order</a>
+      <a href="#">Visit</a>
+    </nav>
+  </header>
+
+  <main class="order-page">
+
+    <p class="stamp"><span>Fri Aug 7 · 8:58 AM</span><span>·</span><b>Second bake at 11:00</b></p>
+    <h1>Reserve for pickup</h1>
+    <p class="lede">
+      Two fields, no account, nothing to pay now. We hold your bag with your
+      name on it until we close.
+    </p>
+
+    <section class="step">
+      <h2>1 — What you're taking <em>counts are live</em></h2>
+
+      <div class="pick">
+        <span class="name">Country sourdough</span>
+        <span class="meta">$9.00 · <b>12 left</b></span>
+        <span class="stepper">
+          <button type="button" aria-label="One fewer country sourdough">−</button>
+          <span class="qty">1</span>
+          <button type="button" aria-label="One more country sourdough">+</button>
+        </span>
+      </div>
+
+      <div class="pick capped">
+        <span class="name">Buckwheat croissant</span>
+        <span class="meta">$4.50 · <b>that's all 5 of them</b></span>
+        <span class="stepper">
+          <button type="button" aria-label="One fewer buckwheat croissant">−</button>
+          <span class="qty">5</span>
+          <button type="button" aria-label="One more buckwheat croissant" disabled>+</button>
+        </span>
+      </div>
+
+      <div class="pick gone">
+        <span class="name">Morning bun</span>
+        <span class="meta">$4.00 · gone at 8:52 AM</span>
+        <span class="later">back tomorrow<br>at 6:30 AM</span>
+      </div>
+
+      <div class="pick">
+        <span class="name">Rye &amp; caraway</span>
+        <span class="meta">$9.50 · in the 11:00 bake</span>
+        <span class="later"><a href="#">reserve from<br>the second bake</a></span>
+      </div>
+
+      <div class="pick">
+        <span class="name">Ham &amp; gruyère handpie</span>
+        <span class="meta">$6.75 · <b>9 left</b></span>
+        <span class="stepper">
+          <button type="button" aria-label="One fewer handpie" disabled>−</button>
+          <span class="qty">0</span>
+          <button type="button" aria-label="One more handpie">+</button>
+        </span>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2>2 — When you're coming <em>15-minute windows</em></h2>
+      <div class="chips">
+        <button class="chip" type="button" disabled>9:15 – 9:30</button>
+        <button class="chip" type="button" aria-pressed="true">9:30 – 9:45</button>
+        <button class="chip" type="button" aria-pressed="false">9:45 – 10:00</button>
+        <button class="chip" type="button" aria-pressed="false">10:00 – 10:15</button>
+        <button class="chip" type="button" aria-pressed="false">10:15 – 10:30</button>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2>3 — Who we're holding it for</h2>
+      <div class="fields">
+        <label>
+          <span>NAME</span>
+          <input type="text" value="Dana R." autocomplete="name">
+        </label>
+        <label>
+          <span>PHONE — only if we need to reach you</span>
+          <input type="tel" value="(503) 555-0142" autocomplete="tel">
+        </label>
+      </div>
+    </section>
+
+    <div class="total">
+      <span class="sum">$31.50<small>6 ITEMS · 9:30 – 9:45 AM</small></span>
+      <button class="cta" type="button">Hold my order</button>
+    </div>
+    <p class="pay-note">
+      Pay at the counter — card or cash. If you don't make it, nothing happens:
+      the bag goes back on the shelf at close and you owe us nothing.
+    </p>
+
+  </main>
+
+</div>
+
+</body>
+</html>
