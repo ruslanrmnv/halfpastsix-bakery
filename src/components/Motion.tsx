@@ -25,7 +25,10 @@ export default function Motion() {
   // scrolling (anchors, keyboard, find-in-page) and only smooths the wheel.
   useEffect(() => {
     if (document.documentElement.classList.contains("motion-off")) return;
-    const lenis = new Lenis();
+    // lerp is the coast length: lower = the page keeps gliding after the
+    // wheel stops. 0.06 is a pronounced glide (client's ask) while the
+    // scrollbar and keyboard stay native and instant.
+    const lenis = new Lenis({ lerp: 0.06 });
     let rafId = requestAnimationFrame(function raf(t) {
       lenis.raf(t);
       rafId = requestAnimationFrame(raf);
