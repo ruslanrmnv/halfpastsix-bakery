@@ -25,10 +25,14 @@ export default function Motion() {
   // scrolling (anchors, keyboard, find-in-page) and only smooths the wheel.
   useEffect(() => {
     if (document.documentElement.classList.contains("motion-off")) return;
-    // lerp is the coast length: lower = the page keeps gliding after the
-    // wheel stops. 0.06 is a pronounced glide (client's ask) while the
-    // scrollbar and keyboard stay native and instant.
-    const lenis = new Lenis({ lerp: 0.06 });
+    // Duration mode, not lerp: a real wheel emits a stream of ~100px steps,
+    // and lerp coasting after each step is too short to register. A fixed
+    // eased duration stretches every step into a long glide (client's ask).
+    // The scrollbar and keyboard stay native and instant.
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
     let rafId = requestAnimationFrame(function raf(t) {
       lenis.raf(t);
       rafId = requestAnimationFrame(raf);
