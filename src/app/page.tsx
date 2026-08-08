@@ -19,6 +19,7 @@ export default function Home() {
           src="/bread.jpg"
           alt=""
           fetchPriority="high"
+          data-parallax="0.18"
           className="absolute inset-0 h-full w-full object-cover object-[74%_38%]"
         />
         <div className="hero-tint" aria-hidden />
@@ -28,30 +29,45 @@ export default function Home() {
 
           <main className="pt-4 pb-10 desk:grid desk:flex-1 desk:grid-cols-[minmax(0,1fr)_minmax(420px,500px)] desk:items-center desk:gap-[72px] desk:pt-10 desk:pb-14">
             <div>
-              <Stamp onPhoto />
-              <h1 className="mb-4 max-w-[18ch] font-display text-[clamp(31px,7.8vw,60px)] font-black leading-[1.05] tracking-[-0.01em] text-cream-2">
+              <div data-rise style={{ "--rise": 0 } as React.CSSProperties}>
+                <Stamp onPhoto />
+              </div>
+              <h1
+                data-split
+                className="mb-4 max-w-[18ch] font-display text-[clamp(31px,7.8vw,60px)] font-black leading-[1.05] tracking-[-0.01em] text-cream-2"
+              >
                 Today&apos;s bake, and what&apos;s left of it.
               </h1>
-              <p className="mb-[22px] max-w-[40ch] text-[17px] leading-[1.5] text-latte desk:mb-[30px] desk:text-[18.5px]">
+              <p
+                data-rise
+                style={{ "--rise": 2 } as React.CSSProperties}
+                className="mb-[22px] max-w-[40ch] text-[17px] leading-[1.5] text-latte desk:mb-[30px] desk:text-[18.5px]"
+              >
                 We bake twice a morning and stop when the flour runs out.
                 Reserve what you want, pay at the counter.
               </p>
-              <Link href="/order/" className={ctaClass}>
-                Reserve for pickup
-              </Link>
-              <p className="mt-2.5 text-[13.5px] text-latte">
-                Free · 90 seconds · no account
-              </p>
+              <div data-rise style={{ "--rise": 3 } as React.CSSProperties}>
+                <Link href="/order/" className={ctaClass}>
+                  Reserve for pickup
+                </Link>
+                <p className="mt-2.5 text-[13.5px] text-latte">
+                  Free · 90 seconds · no account
+                </p>
+              </div>
             </div>
 
-            <Board />
+            <div data-rise style={{ "--rise": 4 } as React.CSSProperties}>
+              <div data-float>
+                <Board />
+              </div>
+            </div>
           </main>
         </div>
       </div>
 
       {/* 3 · How pickup works — three facts, no ceremony */}
       <section className="wrap py-12 desk:py-16" aria-label="How pickup works">
-        <h2 className="font-display text-xl font-extrabold desk:text-[22px]">
+        <h2 data-split className="font-display text-xl font-extrabold desk:text-[22px]">
           How pickup works
         </h2>
         <div className="mt-6 grid gap-6 desk:grid-cols-3 desk:gap-10">
@@ -86,7 +102,7 @@ export default function Home() {
       {/* 4 · Two bakes — dark band, no heading; the times carry it */}
       <section className="bg-cocoa text-cream-2" aria-label="Two bakes a morning">
         <div className="wrap grid gap-10 py-12 desk:grid-cols-2 desk:gap-16 desk:py-16">
-          <div>
+          <div data-rise style={{ "--rise": 0 } as React.CSSProperties}>
             <p className="font-display text-[34px] font-black leading-none tabular-nums desk:text-[44px]">
               6:30 AM
             </p>
@@ -95,7 +111,7 @@ export default function Home() {
               doors open at 7:00 while the racks are still warm.
             </p>
           </div>
-          <div>
+          <div data-rise style={{ "--rise": 1 } as React.CSSProperties}>
             <p className="font-display text-[34px] font-black leading-none tabular-nums desk:text-[44px]">
               11:00 AM
             </p>
@@ -136,7 +152,7 @@ export default function Home() {
       <section className="wrap py-12 desk:py-16" aria-label="Visit">
         <div className="grid gap-8 desk:grid-cols-2">
           <div>
-            <h2 className="font-display text-xl font-extrabold desk:text-[22px]">
+            <h2 data-split className="font-display text-xl font-extrabold desk:text-[22px]">
               Visit
             </h2>
             <p className="mt-3 text-[16.5px] leading-[1.6]">

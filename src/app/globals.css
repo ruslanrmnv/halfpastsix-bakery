@@ -71,3 +71,83 @@ html {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
+
+/*
+ * Motion layer (client review pass, decisions 9.x). All pre-animation hidden
+ * states are gated on `html.js:not(.motion-off)`: no JavaScript or
+ * prefers-reduced-motion and the page simply renders finished. Transforms
+ * and opacity only — nothing here can move layout.
+ */
+
+/* Lenis housekeeping (from its docs). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Masked headings: each rendered line sits in an overflow slot. */
+.line-mask {
+  display: block;
+  overflow: hidden;
+}
+.line-in {
+  display: block;
+}
+.js:not(.motion-off) [data-split] .line-in {
+  transform: translateY(112%);
+  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.js:not(.motion-off) [data-split].in .line-in {
+  transform: none;
+}
+
+/* Rise-in blocks; stagger comes from the data-rise index. */
+.js:not(.motion-off) [data-rise] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: calc(90ms * var(--rise, 0));
+}
+.js:not(.motion-off) [data-rise].in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Idle drift for the hero board — the one floating element. */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.js:not(.motion-off) [data-float] {
+  animation: drift 7s ease-in-out infinite;
+}
+
+/* Parallax media gets its transform from JS; hint the compositor. */
+[data-parallax] {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-split] .line-in,
+  .js [data-rise] {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+  .js [data-float] {
+    animation: none;
+  }
+}

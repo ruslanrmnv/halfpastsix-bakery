@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
 import { montserrat, sourceSans } from "./fonts";
+import Motion from "@/components/Motion";
 import SiteFooter from "@/components/SiteFooter";
 import { site } from "@/data/site";
 import "./globals.css";
+
+// Runs before first paint so the motion layer's hidden states exist from the
+// start (no flash-then-hide). Reduced-motion readers never get hidden states.
+const motionGate =
+  "document.documentElement.classList.add('js');" +
+  "if(matchMedia('(prefers-reduced-motion: reduce)').matches)" +
+  "document.documentElement.classList.add('motion-off');";
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.address.city} bakery`,
@@ -16,7 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${sourceSans.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: motionGate }} />
+      </head>
       <body className="bg-cream font-ui text-[16px] leading-[1.55] text-cocoa">
+        <Motion />
         {children}
         <SiteFooter />
       </body>

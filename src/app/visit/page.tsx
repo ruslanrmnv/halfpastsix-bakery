@@ -17,7 +17,10 @@ export default function VisitPage() {
 
       <main className="max-w-[760px] pt-6 pb-14">
         <Stamp />
-        <h1 className="mb-2.5 max-w-[20ch] font-display text-[clamp(31px,7.6vw,48px)] font-black leading-[1.05] tracking-[-0.01em]">
+        <h1
+          data-split
+          className="mb-2.5 max-w-[20ch] font-display text-[clamp(31px,7.6vw,48px)] font-black leading-[1.05] tracking-[-0.01em]"
+        >
           Find us on Belmont
         </h1>
         <p className="mb-0 max-w-[46ch] text-[16.5px] leading-[1.5] text-mocha">

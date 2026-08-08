@@ -22,6 +22,12 @@ the phone number, the domain and the people do not exist. See
   disabled button.
 - **Visit** — address, hours and pickup details as text. No embedded maps.
 
+Motion is a progressive-enhancement layer: inertial scroll, masked
+headline reveals, a slow parallax on the hero photo and an idle drift on
+the board. All of it is transform/opacity only, gated behind a `js` class
+added before first paint, and fully disabled for `prefers-reduced-motion`
+users.
+
 ## Stack
 
 - Next.js 15 (App Router, `output: "export"` — fully static, no server)
@@ -74,7 +80,9 @@ not resolve.
 - Fonts: Montserrat and Source Sans 3 — SIL Open Font License 1.1,
   self-hosted as unmodified variable latin subsets.
 - Code: no third-party themes, templates or UI kits; the only icon is an
-  own primitive SVG.
+  own primitive SVG. The single runtime library is
+  [Lenis](https://github.com/darkroomengineering/lenis) (MIT) for inertial
+  scrolling, bundled at build time — the zero-external-requests rule holds.
 
 ## Before using this in production
 
