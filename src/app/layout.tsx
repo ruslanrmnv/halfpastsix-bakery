@@ -23,7 +23,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${sourceSans.variable}`}>
+    // suppressHydrationWarning: the motion gate intentionally adds html
+    // classes before hydration; Lenis adds its own at runtime.
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${montserrat.variable} ${sourceSans.variable}`}
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: motionGate }} />
       </head>
