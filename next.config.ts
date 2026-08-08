@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   // No image CDN on a static export; the hero photo is self-hosted at build time.
   images: { unoptimized: true },
+  // Dev and build must not share a dist dir: `next build` wipes the chunks a
+  // running dev server still serves, and the preview dies with 500s.
+  distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
 };
 
 export default nextConfig;
