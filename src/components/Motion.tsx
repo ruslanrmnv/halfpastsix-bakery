@@ -25,14 +25,12 @@ export default function Motion() {
   // scrolling (anchors, keyboard, find-in-page) and only smooths the wheel.
   useEffect(() => {
     if (document.documentElement.classList.contains("motion-off")) return;
-    // Duration mode, not lerp: a real wheel emits a stream of ~100px steps,
-    // and lerp coasting after each step is too short to register. A fixed
-    // eased duration stretches every step into a long glide (client's ask).
-    // The scrollbar and keyboard stay native and instant.
-    const lenis = new Lenis({
-      duration: 1.4,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
+    // Lerp mode, tuned for touchpads (the client's input): a touchpad
+    // streams tiny deltas with OS momentum on top, and any per-step
+    // duration ease ends up tracking the fingers 1:1 — dry. A low lerp
+    // makes the page visibly trail the gesture and keep drifting after
+    // the fingers lift. Scrollbar and keyboard stay native and instant.
+    const lenis = new Lenis({ lerp: 0.05 });
     let rafId = requestAnimationFrame(function raf(t) {
       lenis.raf(t);
       rafId = requestAnimationFrame(raf);
