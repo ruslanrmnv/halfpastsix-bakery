@@ -1,0 +1,12 @@
+// Cloudflare Workers Builds config: this site is a static export (out/),
+// not a server-side Next.js app. Without this file the build auto-config
+// guesses OpenNext and dies looking for .next/standalone (decision 8.8).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "halfpastsix-bakery",
+  "compatibility_date": "2026-08-10",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
