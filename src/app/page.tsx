@@ -14,9 +14,19 @@ export default function Home() {
     <>
       {/* 1+2 · Photo hero with the board ticket */}
       <div className="relative overflow-hidden bg-cocoa-deep">
-        {/* Self-hosted still of a scored crust (provenance: phase 7 log) */}
+        {/* Self-hosted still of a scored crust (provenance: phase 7 log).
+            Written out by hand rather than through next/image: this is a
+            static export, so there is no image server behind it and
+            next/image would hand every phone the desktop file. The rungs are
+            resized from the same original, so the crop the visitor sees does
+            not change — a 390px phone now takes the 960 at 47 KB where the
+            JPEG was 355 KB for everybody. */}
         <img
-          src="/bread.jpg"
+          src="/bread-1280.webp"
+          srcSet="/bread-640.webp 640w, /bread-960.webp 960w, /bread-1280.webp 1280w, /bread-1600.webp 1600w, /bread-1920.webp 1920w"
+          sizes="100vw"
+          width={1920}
+          height={2880}
           alt=""
           fetchPriority="high"
           data-parallax="0.18"

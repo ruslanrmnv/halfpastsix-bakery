@@ -12,9 +12,26 @@ const motionGate =
   "if(matchMedia('(prefers-reduced-motion: reduce)').matches)" +
   "document.documentElement.classList.add('motion-off');";
 
+const SITE_URL = "https://bakery.servicestudiobyruslan.com";
+
+const TITLE = `${site.name} — ${site.address.city} bakery`;
+const DESCRIPTION = `${site.tagline}. Reserve today's bread for pickup — ${site.hours.days}, ${site.hours.open} ${site.hours.note}.`;
+
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.address.city} bakery`,
-  description: `${site.tagline}. Reserve today's bread for pickup — ${site.hours.days}, ${site.hours.open} ${site.hours.note}.`,
+  /* Without a base, a relative canonical and the share card resolve against
+     nothing and Next leaves both out of the export. */
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    siteName: site.name,
+    url: "/",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({

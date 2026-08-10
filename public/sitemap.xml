@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Trailing slashes throughout: next.config sets trailingSlash, so /menu/ is
+     the address the site actually serves and /menu would be a redirect. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://bakery.servicestudiobyruslan.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://bakery.servicestudiobyruslan.com/menu/</loc><priority>0.8</priority></url>
+  <url><loc>https://bakery.servicestudiobyruslan.com/order/</loc><priority>0.8</priority></url>
+  <url><loc>https://bakery.servicestudiobyruslan.com/visit/</loc><priority>0.6</priority></url>
+  <url><loc>https://bakery.servicestudiobyruslan.com/accessibility/</loc><priority>0.3</priority></url>
+  <url><loc>https://bakery.servicestudiobyruslan.com/privacy/</loc><priority>0.3</priority></url>
+</urlset>
