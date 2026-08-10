@@ -107,14 +107,19 @@ html.lenis body {
   transform: none;
 }
 
-/* Rise-in blocks; stagger comes from the data-rise index. */
+/* Rise-in blocks; stagger comes from the data-rise index.
+   Both numbers below are charged to the largest paint in the first screen: an
+   element at opacity 0 has not painted, so the browser dates the page's
+   largest paint from the end of this transition plus its stagger. The hero
+   runs --rise up to 4, which at 90ms a step spent 360ms before the 700ms even
+   started. It still reads as a stagger at 60 and 500. */
 .js:not(.motion-off) [data-rise] {
   opacity: 0;
   transform: translateY(18px);
   transition:
-    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
-  transition-delay: calc(90ms * var(--rise, 0));
+    opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: calc(60ms * var(--rise, 0));
 }
 .js:not(.motion-off) [data-rise].in {
   opacity: 1;

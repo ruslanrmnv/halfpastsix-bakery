@@ -93,13 +93,20 @@ export default function Motion() {
       { threshold: 0.15 },
     );
 
+    /* Rise-in blocks are observed straight away. Only the split needs fonts:
+       it measures rendered line breaks, and measuring them against a fallback
+       face gives the wrong ones. A rise measures nothing, and putting it in
+       the same queue parked every one of them behind the last woff2 to land —
+       Lighthouse dated this page's largest paint 2351ms after first byte, and
+       the element it named was the hero paragraph, sitting at opacity 0 that
+       whole time waiting on a font it never needed. */
+    document.querySelectorAll("[data-rise]").forEach((el) => io.observe(el));
+
     let cancelled = false;
     document.fonts.ready.then(() => {
       if (cancelled) return;
       document.querySelectorAll<HTMLElement>("[data-split]").forEach(splitOne);
-      document
-        .querySelectorAll("[data-split], [data-rise]")
-        .forEach((el) => io.observe(el));
+      document.querySelectorAll("[data-split]").forEach((el) => io.observe(el));
     });
 
     // Differentiated media speed. The photo lags the text by the given
